@@ -2,230 +2,208 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intervención Comunitaria: Soledad No Deseada en Personas Mayores | UCA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soledad no deseada en Personas Mayores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       ESTILOS. No hace falta tocar nada de esta parte.
+       ========================================================= -->
   <style>
     :root {
-      --bg-color: #EEF2EC;
-      --primary-color: #2F7D6D;
-      --text-color: #1F3A4D;
-      --card-bg: #FFFFFF;
-      --border-color: #C8D6CE;
+      --fondo: #EEF2EC;
+      --superficie: #FFFFFF;
+      --texto: #1F3A4D;
+      --texto-suave: #4F6573;
+      --acento: #2F7D6D;
+      --borde: #C9D6CF;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fondo: #142630;
+        --superficie: #1C3240;
+        --texto: #E6EEEA;
+        --texto-suave: #A9BCC4;
+        --acento: #6CC3AE;
+        --borde: #2E4A57;
+        color-scheme: dark;
+      }
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.65;
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.6;
     }
 
-    header {
-      background-color: var(--primary-color);
-      color: #FFFFFF;
-      padding: 3rem 1.5rem;
-      text-align: center;
-      border-bottom: 4px solid var(--text-color);
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      max-width: 750px;
+    header, main, footer {
+      max-width: 60rem;
       margin: 0 auto;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
       padding: 0 1.25rem;
     }
 
-    .card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem 1.75rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 10px rgba(31, 58, 77, 0.06);
+    header { padding-top: 3rem; }
+
+    h1, h2 {
+      font-family: "Literata", Georgia, serif;
+      line-height: 1.2;
+      margin: 0 0 0.5rem;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+    h2 { font-size: 1.6rem; color: var(--acento); }
+
+    .subtitulo {
+      color: var(--texto-suave);
+      max-width: 40rem;
+      margin: 0 0 2rem;
     }
 
-    h2 {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--bg-color);
-      padding-bottom: 0.5rem;
+    section { margin: 3.5rem 0; }
+    section > p { max-width: 40rem; }
+
+    img { max-width: 100%; display: block; }
+
+    /* PASO 3: imagen de cabecera */
+    .imagen-cabecera {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 1.25rem;
     }
 
-    p {
-      margin-bottom: 1rem;
-    }
-
-    .grid-ejes {
+    /* PASO 4: galería */
+    .galeria {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 1.5rem;
+    }
+    .galeria figure {
+      margin: 0;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    .galeria img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .galeria figcaption {
+      padding: 0.75rem 1rem 1rem;
+      font-size: 0.95rem;
+      color: var(--texto-suave);
     }
 
-    .eje-box {
-      background-color: var(--bg-color);
-      border-left: 4px solid var(--primary-color);
-      padding: 1.25rem;
-      border-radius: 8px;
-    }
-
-    .eje-box h3 {
-      color: var(--primary-color);
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .video-wrapper {
+    /* PASO 6: vídeo */
+    .video-contenedor {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Proporción 16:9 */
-      height: 0;
+      aspect-ratio: 16 / 9;
+      border-radius: 0.75rem;
       overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(31, 58, 77, 0.14);
-      margin-top: 1rem;
+      background: #000;
     }
-
-    .video-wrapper iframe {
+    .video-contenedor iframe {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    .video-fallback {
-      font-size: 0.9rem;
-      margin-top: 0.85rem;
-      text-align: right;
+    /* Aviso que se ve mientras una zona está vacía */
+    .zona:not(:has(*)) {
+      border: 2px dashed var(--borde);
+      border-radius: 0.75rem;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--texto-suave);
     }
-
-    .video-fallback a {
-      color: var(--primary-color);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .video-fallback a:hover {
-      text-decoration: underline;
-    }
-
-    .ética-box {
-      background-color: var(--bg-color);
-      border: 1px dashed var(--primary-color);
-      padding: 1.25rem;
-      border-radius: 8px;
-      font-size: 0.92rem;
-    }
+    .zona:not(:has(*))::before { content: attr(data-aviso); }
 
     footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--text-color);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border-color);
-      margin-top: 3rem;
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--borde);
+      color: var(--texto-suave);
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Red Comunitaria contra la Soledad No Deseada</h1>
-    <p>Estrategia de Intervención Social Comunitaria con Personas Mayores de 65 años en Andalucía · Grado en Trabajo Social (UCA)</p>
+    <h1>Soledad no deseada en Personas Mayores</h1>
+    <p class="subtitulo">Este trabajo aborda la soledad no deseada en personas mayores de 65 años, provocada por la quiebra de sus redes de apoyo formales e informales en el ámbito urbano. Desde el Trabajo Social Comunitario, el proyecto se dirige a este colectivo para restituir sus derechos relacionales y su autodeterminación mediante la dinamización de activos de salud local. La intervención articula la detección precoz del riesgo desde los Servicios Sociales Comunitarios con la reconstrucción del tejido relacional cotidiano.</p>
+
+    <div class="zona" data-aviso="Aquí aparecerá tu imagen de cabecera (paso 3)">
+      <!-- PASO 3: CABECERA ============================ INICIO -->
+      <img class="imagen-cabecera" src="img/cabecera.jfif" alt="Ilustración de un grupo diverso de personas mayores conversando animadamente alrededor de una mesa en un centro comunitario luminoso con plantas.">
+      <!-- PASO 3: CABECERA =============================== FIN -->
+    </div>
   </header>
 
   <main>
 
-    <!-- Sección 1: Marco Institucional y Diagnóstico Social -->
-    <section class="card" id="fundamentacion">
-      <h2>1. Diagnóstico Social y Marco Normativo</h2>
-      <p>
-        La <strong>soledad no deseada</strong> en la población mayor de 65 años constituye una vulneración de los derechos relacionales y un factor de riesgo psicosocial vinculado a la fragilidad de las redes de apoyo informal en nuestros barrios.
-      </p>
-      <p>
-        Al amparo de la <strong>Ley 9/2016, de 27 de diciembre, de Servicios Sociales de Andalucía</strong>, esta propuesta articula la prevención primaria y el <strong>triaje social comunitario</strong> desde los Servicios Sociales Comunitarios, promoviendo la autodeterminación, el envejecimiento activo y el arraigo en el entorno habitual.
-      </p>
-    </section>
+    <section id="galeria">
+      <h2>Galería</h2>
+      <p>Estas escenas ilustran tres ejes clave de la intervención comunitaria desde los Servicios Sociales Comunitarios de Andalucía para revertir el aislamiento involuntario, fortaleciendo las redes vecinales y la autodeterminación de las personas mayores.</p>
 
-    <!-- Sección 2: Ejes de Intervención Comunitaria -->
-    <section class="card" id="ejes-intervencion">
-      <h2>2. Ejes de Intervención y Metodología</h2>
-      <div class="grid-ejes">
-        <div class="eje-box">
-          <h3>Detección Precoz en Red</h3>
-          <p>Coordinación sociosanitaria y mapeo de redes vecinales (comercios de proximidad, farmacias y centros de participación activa) para identificar situaciones de aislamiento involuntario.</p>
+      <div class="zona" data-aviso="Aquí aparecerá tu galería de tres imágenes (paso 4)">
+        <!-- PASO 4: GALERÍA ============================= INICIO -->
+        <div class="galeria">
+          <figure>
+            <img src="img/imagen2.jfif" alt="Ilustración de dos mujeres mayores sentadas en una asociación vecinal mientras una enseña a la otra a utilizar una tableta digital.">
+            <figcaption>La alfabetización digital entre iguales reduce la brecha tecnológica, refuerza la autonomía personal y facilita el mantenimiento de vínculos familiares y sociales. Imagen generada con Gemini (IA).</figcaption>
+          </figure>
+          <figure>
+            <img src="img/imagen3.jfif" alt="Ilustración de un hombre mayor con bastón y una joven voluntaria paseando juntos y conversando por un parque soleado de Andalucía.">
+            <figcaption>El acompañamiento comunitario e intergeneracional combate el aislamiento en el hogar y fomenta la participación activa en el entorno urbano cercano. Imagen generada con Gemini (IA).</figcaption>
+          </figure>
+          <figure>
+            <img src="img/imagen4.jfif" alt="Ilustración de varias personas mayores trabajando juntas en el cuidado de plantas y cultivos dentro de un huerto urbano comunitario.">
+            <figcaption>La dinamización de activos de salud local promueve el envejecimiento activo, el apoyo mutuo y la reconstrucción del tejido social del barrio. Imagen generada con Gemini (IA).</figcaption>
+          </figure>
         </div>
-        <div class="eje-box">
-          <h3>Apoyo Mutuo y Brecha Digital</h3>
-          <p>Grupos de apoyo entre iguales y talleres de alfabetización digital básica para reforzar la autonomía cotidiana y el acceso efectivo a prestaciones y trámites electrónicos.</p>
-        </div>
-        <div class="eje-box">
-          <h3>Activos de Salud Local</h3>
-          <p>Dinamización intergeneracional mediante huertos urbanos comunitarios y espacios culturales abiertos que reconstruyen el tejido social y el empoderamiento colectivo.</p>
-        </div>
+        <!-- PASO 4: GALERÍA ================================ FIN -->
       </div>
     </section>
 
-    <!-- Sección 3: Recurso Audiovisual Divulgativo (Google Vids) -->
-    <section class="card" id="video-comunitario">
-      <h2>3. Presentación Audiovisual del Proyecto</h2>
-      <p>
-        Síntesis divulgativa de la intervención comunitaria diseñada para sensibilizar al tejido vecinal y profesional sobre el abordaje integral de la soledad no deseada.
-      </p>
+    <section id="video">
+      <h2>Vídeo de presentación</h2>
+      <p>En este vídeo te contamos el proyecto en menos de un minuto y medio.</p>
 
-      <div class="video-wrapper">
-        <iframe 
-          src="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/preview" 
-          title="Vídeo divulgativo sobre intervención comunitaria en soledad no deseada en mayores de 65 años"
-          allow="autoplay; fullscreen" 
-          allowfullscreen>
-        </iframe>
+      <div class="zona" data-aviso="Aquí aparecerá tu vídeo (paso 6)">
+        <!-- PASO 6: VÍDEO =============================== INICIO -->
+        <div class="video-contenedor">
+          <iframe 
+            src="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/preview" 
+            title="Vídeo de presentación sobre intervención comunitaria en soledad no deseada en personas mayores"
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <!-- PASO 6: VÍDEO ================================== FIN -->
       </div>
-
-      <p class="video-fallback">
-        ¿No visualizas el reproductor? 
-        <a href="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/play?usp=sharing" target="_blank" rel="noopener noreferrer">
-          Abrir vídeo directamente en Google Vids ↗
-        </a>
+      <p style="font-size: 0.95rem; margin-top: 0.75rem; color: var(--texto-suave);">
+        Si no se reproduce directamente, puedes <a href="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/play?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--acento); font-weight: 700;">abrir el vídeo en una nueva pestaña</a>.
       </p>
-    </section>
-
-    <!-- Sección 4: Declaración Ética y Transparencia en el Uso de IA -->
-    <section class="card" id="transparencia-ia">
-      <h2>4. Transparencia Ética y Accesibilidad</h2>
-      <div class="ética-box">
-        <p style="margin-bottom: 0;">
-          <strong>Declaración de uso de herramientas de Inteligencia Artificial:</strong> Para la producción del recurso audiovisual incrustado en este sitio web (montado en Google Vids), se ha empleado la herramienta de síntesis de voz <strong>TTSMaker</strong> con el objetivo de garantizar una locución clara, pausada y accesible para personas mayores o con diversidad funcional visual. Todos los contenidos técnicos, el encuadre legislativo (Ley 9/2016 de Servicios Sociales de Andalucía) y el diseño metodológico de la intervención han sido elaborados, contrastados y supervisados íntegramente por la autoría del proyecto.
-        </p>
-      </div>
     </section>
 
   </main>
 
   <footer>
-    <p><strong>Asignatura:</strong> Informática para el Trabajo Social · Grado en Trabajo Social · Universidad de Cádiz (UCA)</p>
-    <p>Recurso académico elaborado bajo criterios de accesibilidad web y rigor profesional.</p>
+    <p>Proyecto de la asignatura Informática para el Trabajo Social · Universidad de Cádiz.
+      Las imágenes de esta web se han generado con Gemini (IA) y la locución del vídeo con TTSMaker (IA) para garantizar la accesibilidad auditiva.</p>
   </footer>
 
 </body>
