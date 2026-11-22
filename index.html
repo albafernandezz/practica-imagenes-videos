@@ -110,16 +110,41 @@
       aspect-ratio: 16 / 9;
       border-radius: 0.75rem;
       overflow: hidden;
-      background: #000;
+      background: #142630;
       border: 1px solid var(--borde);
     }
-    .video-contenedor video {
-      position: absolute;
-      inset: 0;
+    .video-portada {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border: 0;
+      opacity: 0.45;
+    }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: #FFFFFF;
+    }
+    .boton-video {
+      display: inline-block;
+      background: var(--acento);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.9rem 1.75rem;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .boton-video:hover {
+      transform: scale(1.03);
+      opacity: 0.95;
     }
 
     /* Aviso que se ve mientras una zona está vacía */
@@ -187,11 +212,18 @@
       <div class="zona" data-aviso="Aquí aparecerá tu vídeo (paso 6)">
         <!-- PASO 6: VÍDEO =============================== INICIO -->
         <div class="video-contenedor">
-          <video controls preload="metadata" poster="./img/cabecera.jfif">
-            <source src="./video.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción directa de vídeo.
-          </video>
+          <img class="video-portada" src="./img/cabecera.jfif" alt="Portada del vídeo de presentación del proyecto sobre soledad no deseada">
+          <div class="video-overlay">
+            <a class="boton-video" href="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/play?usp=sharing" target="_blank" rel="noopener noreferrer">
+              ▶ Reproducir vídeo de presentación
+            </a>
+          </div>
         </div>
+        <p style="margin-top: 0.75rem;">
+          <a href="https://docs.google.com/videos/d/1JbizALIvDKbdP15JsMq_P4qP_2SDZPDlysB_5fkg9pA/play?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--acento); font-weight: bold;">
+            Abrir enlace directo al vídeo en nueva pestaña
+          </a>
+        </p>
         <!-- PASO 6: VÍDEO ================================== FIN -->
       </div>
     </section>
